@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pushdb.css">
+    <title>登録用画面</title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <div id="pr">
+        pokemon NO~に応じたポケモン名称を入力して送信するボタンを押してください。
+    </div>
+
+    <div id="poke_zukan" class="container">
+       pokemon NO 1 <textarea id="poke_1" class="input"></textarea>
+       pokemon NO 2 <textarea id="poke_2" class="input"></textarea>
+       pokemon NO 3 <textarea id="poke_3" class="input"></textarea>
+       pokemon NO 4 <textarea id="poke_4" class="input"></textarea>
+       pokemon NO 5 <textarea id="poke_5" class="input"></textarea>
+       pokemon NO 6 <textarea id="poke_6" class="input"></textarea>
+       pokemon NO 7 <textarea id="poke_7" class="input"></textarea>
+       pokemon NO 8 <textarea id="poke_8" class="input"></textarea>
+       pokemon NO 9 <textarea id="poke_9" class="input"></textarea>
+       pokemon NO 10 <textarea id="poke_10" class="input"></textarea>
+       pokemon NO 11 <textarea id="poke_11" class="input"></textarea>
+       pokemon NO 12 <textarea id="poke_12" class="input"></textarea>
+       pokemon NO 13 <textarea id="poke_13" class="input"></textarea>
+       pokemon NO 14 <textarea id="poke_14" class="input"></textarea>
+       pokemon NO 15 <textarea id="poke_15" class="input"></textarea>
+       pokemon NO 16 <textarea id="poke_16" class="input"></textarea>
+       pokemon NO 17 <textarea id="poke_17" class="input"></textarea>
+       pokemon NO 18 <textarea id="poke_18" class="input"></textarea>
+       pokemon NO 19 <textarea id="poke_19" class="input"></textarea>
+       pokemon NO 20 <textarea id="poke_20" class="input"></textarea>
+       pokemon NO 21 <textarea id="poke_21" class="input"></textarea>
+       pokemon NO 22 <textarea id="poke_22" class="input"></textarea>
+       pokemon NO 23 <textarea id="poke_23" class="input"></textarea>
+       pokemon NO 24 <textarea id="poke_24" class="input"></textarea>
+       pokemon NO 25 <textarea id="poke_25" class="input"></textarea>
+       pokemon NO 26 <textarea id="poke_26" class="input"></textarea>
+       pokemon NO 27 <textarea id="poke_27" class="input"></textarea>
+       pokemon NO 28 <textarea id="poke_28" class="input"></textarea>
+       pokemon NO 29 <textarea id="poke_29" class="input"></textarea>
+       pokemon NO 30 <textarea id="poke_30" class="input"></textarea>
+
+
+
+
+    </div>
+    <div id="send">
+        <button id="send_poke" class="custom-btn btn-2">送信する</button>
+    </div>
+
+    <script type="module">
+   
+        import { initializeApp, } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved,child } 
+        from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";  
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut } 
+        from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+          apiKey: "",
+          authDomain: "kadai-e42aa.firebaseapp.com",
+          projectId: "kadai-e42aa",
+          storageBucket: "kadai-e42aa.appspot.com",
+          messagingSenderId: "557897220147",
+          appId: "1:557897220147:web:02aed362143e05fa44a346"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const dbRef = ref(db,"poke_zukan");
+
+        $('#send_poke').on("click",function(){
+            console.log("click");
+            const msg = {
+                1 : $("#poke_1").val(),
+                2 : $("#poke_2").val(),
+                3 : $("#poke_3").val(),
+                4 : $("#poke_4").val(),
+                5 : $("#poke_5").val(),
+                6 : $("#poke_6").val(),
+                7 : $("#poke_7").val(),
+                8 : $("#poke_8").val(),
+                9 : $("#poke_9").val(),
+                10 : $("#poke_10").val(),
+                11 : $("#poke_11").val(),
+                12 : $("#poke_12").val(),
+                13 : $("#poke_13").val(),
+                14 : $("#poke_14").val(),
+                15 : $("#poke_15").val(),
+                16 : $("#poke_16").val(),
+                17 : $("#poke_17").val(),
+                18 : $("#poke_18").val(),
+                19 : $("#poke_19").val(),
+                20 : $("#poke_20").val(),
+                21 : $("#poke_21").val(),
+                22 : $("#poke_22").val(),
+                23 : $("#poke_23").val(),
+                24 : $("#poke_24").val(),
+                25 : $("#poke_25").val(),
+                26 : $("#poke_26").val(),
+                27 : $("#poke_27").val(),
+                28 : $("#poke_28").val(),
+                29 : $("#poke_29").val(),
+                30 : $("#poke_30").val(),
+                
+            }
+
+            const newPostRef = push(dbRef);
+            set(newPostRef,msg)
+        });
+        
+        
+   
+    </script>
+  
+        
+</body>
+</html>
